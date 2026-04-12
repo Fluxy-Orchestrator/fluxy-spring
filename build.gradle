@@ -1,0 +1,62 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'org.fluxy'
+version = '1.0.0'
+
+ext {
+    springDataVersion = '3.2.1'
+    hibernateVersion = '6.4.4.Final'
+    lombokVersion = '1.18.44'
+    fluxyCoreVersion = '1.0.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    // Fluxy Core (transitiva para consumidores)
+    api "org.fluxy:fluxy-core:${fluxyCoreVersion}"
+
+    // Spring Data JPA
+    implementation "org.springframework.data:spring-data-jpa:${springDataVersion}"
+
+    // Hibernate ORM
+    implementation "org.hibernate.orm:hibernate-core:${hibernateVersion}"
+
+    // Lombok
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    // Testing
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
