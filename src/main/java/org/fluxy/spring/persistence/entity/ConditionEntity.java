@@ -22,7 +22,7 @@ public class ConditionEntity {
     @JoinColumn(name = "connection_id", nullable = false)
     private ConnectionEntity connection;
 
-    @Column(name = "operator_type", nullable = false)
+    @Column(name = "operator_type")
     private String operatorType;
 
     @Column(name = "operator_name", nullable = false)

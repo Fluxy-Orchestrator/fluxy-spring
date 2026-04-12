@@ -4,13 +4,13 @@ plugins {
 }
 
 group = 'org.fluxy'
-version = '1.0.0'
+version = '1.1.0'
 
 ext {
     springDataVersion = '3.2.1'
     hibernateVersion = '6.4.4.Final'
     lombokVersion = '1.18.44'
-    fluxyCoreVersion = '1.0.0'
+    fluxyCoreVersion = '1.1.0'
 }
 
 java {
