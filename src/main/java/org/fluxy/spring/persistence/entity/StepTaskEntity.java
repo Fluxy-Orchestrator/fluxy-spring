@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.fluxy.core.model.TaskResult;
-import org.fluxy.core.model.TaskStatus;
 
 import java.util.UUID;
 
@@ -30,12 +28,5 @@ public class StepTaskEntity {
 
     @Column(name = "task_order", nullable = false)
     private Integer taskOrder;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private TaskStatus status;
-
-    @Enumerated(EnumType.STRING)
-    private TaskResult result;
 }
 

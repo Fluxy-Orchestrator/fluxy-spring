@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.fluxy.core.model.StepStatus;
 
 import java.util.UUID;
 
@@ -29,9 +28,5 @@ public class FlowStepEntity {
 
     @Column(name = "step_order", nullable = false)
     private Integer stepOrder;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "step_status", nullable = false)
-    private StepStatus stepStatus;
 }
 

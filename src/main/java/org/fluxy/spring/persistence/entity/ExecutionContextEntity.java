@@ -31,8 +31,5 @@ public class ExecutionContextEntity {
 
     @OneToMany(mappedBy = "executionContext", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ReferenceEntity> references = new ArrayList<>();
-
-    @OneToOne(mappedBy = "executionContext", cascade = CascadeType.ALL, orphanRemoval = true)
-    private ExecutionMetaInfEntity executionMetaInf;
 }
 
