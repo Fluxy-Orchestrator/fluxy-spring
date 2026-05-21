@@ -4,6 +4,7 @@ import org.fluxy.core.model.ExecutionStatus;
 import org.fluxy.spring.persistence.entity.FluxyExecutionEntity;
 import org.fluxy.spring.persistence.entity.FluxyFlowEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface FluxyExecutionRepository extends JpaRepository<FluxyExecutionEntity, UUID> {
+public interface FluxyExecutionRepository extends JpaRepository<FluxyExecutionEntity, UUID>, JpaSpecificationExecutor<FluxyExecutionEntity> {
 
     /**
      * Idempotencia: busca una ejecucion activa (no FINISHED) para el mismo

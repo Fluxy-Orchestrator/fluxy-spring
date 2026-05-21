@@ -5,7 +5,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.fluxy.core.model.ExecutionStatus;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -51,6 +54,14 @@ public class FluxyExecutionEntity {
 
     @Column(name = "idempotency_key", nullable = false)
     private String idempotencyKey;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Instant createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at", nullable = false)
+    private Instant updatedAt;
 
     @OneToMany(mappedBy = "execution", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExecutionStepRecordEntity> stepRecords = new ArrayList<>();
